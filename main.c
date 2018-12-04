@@ -22,6 +22,7 @@ int main(int argc, char *argv[]) {
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
+	fp = fopen("movie.dat","r");
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
@@ -34,6 +35,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	//1.4 FILE close
+	int fclose(fp);
 	
 	//2. program start
 	while(exit_flag == 0) 
