@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
 	}
 
 	//1.4 FILE close
-	int fclose(fp);
+	fclose(fp);
 	
 	//2. program start
 	while(exit_flag == 0) 
