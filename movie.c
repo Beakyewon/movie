@@ -3,7 +3,7 @@
 #include <string.h>
 #include "movie.h"
 
-typedef struct movInfo{
+typedef struct movInfo{ //구조체 
 	char name[200];
 	float score;
 	int runTime;
@@ -13,9 +13,11 @@ typedef struct movInfo{
 
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
-	movInfo_t* mvPtr;
+	movInfo_t *mvPtr; //구조체 포인터  
 	
-	//allocate memory and set the member variables
+	//allocate memory and set the member variables 메모리 할당 변수 설정.  
+	
+	mvPtr = (struct movInfo*) malloc(100*sizeof(struct movInfo));
 	
 	return (void*)mvPtr;
 }
