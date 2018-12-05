@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list
-	while (         fgets(fp) != EOF)/* read name, country, runtime and score*/
+	while (  fgets(fp) != EOF)/* read name, country, runtime and score*/
 	{	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
@@ -104,6 +104,9 @@ int main(int argc, char *argv[]) {
 				
 			case 4:
 				//2.5.1 get minimal score value to search for
+				printf("--lowest score : ");
+				
+				scanf("%f\n", &score);
 				
 				ndPtr = list;
 					while (/* repeat until the ndPtr points to the end node */)
