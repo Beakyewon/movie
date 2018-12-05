@@ -41,8 +41,10 @@ int main(int argc, char *argv[]) {
 	while(exit_flag == 0) 
 	{
 		//2.1 print menu message and get input option
-		printf("---------------------------------------\n 1. print all the movies\n 2. search for specific country movies\n 3. search for specific runtime movies\n 4. search for specific score movies\n 5. exit\n --------------------------------------\n ");                
+		printf("\n\n\n--------------------Menu-------------------\n 1. print all the movies\n 2. search for specific country movies\n 3. search for specific runtime movies\n 4. search for specific score movies\n 5. exit\n -------------------Menu-------------------\n\n");                
 	
+		printf("--Select the option: ");
+		
 		scanf("%d\n", &option);
 		
 		switch(option)
@@ -62,6 +64,11 @@ int main(int argc, char *argv[]) {
 				break;
 				
 			case 2: //print movies of specific country
+				
+				printf("--Select a country :");
+				
+				scanf("%c\n", &country);
+				
 				//2.3.1 get country name to search for
 				
 				ndPtr = list;
@@ -78,6 +85,10 @@ int main(int argc, char *argv[]) {
 				
 			case 3:
 				//2.4.1 get minimal runtime value to search for
+				
+				printf("--lowest runtime : ");
+				
+				scanf("%d\n", &runtime);
 				
 				ndPtr = list;
 					while (/* repeat until the ndPtr points to the end node */)
