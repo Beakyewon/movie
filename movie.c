@@ -15,11 +15,17 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	movInfo_t *mvPtr; //구조체 포인터  
 	
-	//allocate memory and set the member variables 메모리 할당 변수 설정.  
+	//allocate memory and set the member variables 메모리 할당. 변수 설정.  
 	
-	mvPtr = (struct movInfo*) malloc(100*sizeof(struct movInfo));
+	mvPtr = (movInfo_t*) malloc(sizeof(movInfo_t));
 	
-	return (void*)mvPtr;
+	mvPtr->name = name; 
+	mvPtr->score = score;
+	mvPtr->runTime = runTime;
+	mvPtr->madeIn = country;
+	mvPtr->next = NULL
+
+	return (void*)mvPtr;  //main 함수에서 파일속 문자열 읽어서 mv_genMvInfo이용해 구조체에 저장.  
 }
 
 void mv_print(void* obj)
@@ -41,7 +47,7 @@ void mv_print(void* obj)
 //return the score value from the input instance of movInfo_t structure
 float mv_getScore(void* obj)
 {
-	
+	while()
 }
 
 //return the runtime value from the input instance of movInfo_t structure

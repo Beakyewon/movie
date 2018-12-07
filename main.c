@@ -1,8 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "movie_ref.h"
-#include "linkedList_ref.h"
+#include "movie.h"
+#include "linkedList.h"
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
@@ -22,17 +22,29 @@ int main(int argc, char *argv[]) {
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
-	fp = fopen("movie.dat","r");
+	fp = fopen("movie.txt","r");
+	
+		if (fp == 0){
+        printf("Error while opening");
+        exit(1);
+ }
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
 	
-	//1.3 read each movie data from the file and add it to the linked list
-	while (/* read name, country, runtime and score*/ )
-	{	
+	//1.3 read each movie data from the file and add it to the linked list //영화 정보 한줄씩 읽어와서 링크드 리스트에 저장 
+	movInfo_t [10];
+	int i;
+	
+	for(i=0; i<10; i++){
+		fscanf(fp, "%s, %s, %i, %f", &movInfo_t.name, &movInfo_t.madeIn, &movInfo_t.runTime, &movInfo_t.score);
+	}
+	
+	/* while (/* read name, country, runtime and score)
+	 {	
 		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 		list_addTail(mvInfo, list);
-	}
+	}*/ 
 
 	//1.4 FILE close
 	fclose(fp);
@@ -59,6 +71,7 @@ int main(int argc, char *argv[]) {
 					//ndPtr = the next node of the ndPtr;
 					//get object of ndPtr to mvInfo void pointer
 					//print the contents of the mvInfo
+					}
 				}
 				
 				break;
