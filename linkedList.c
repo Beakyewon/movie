@@ -79,7 +79,7 @@ int updateIndex(node_t* ndPtr)
 */
 void* list_genList(void)
 {
-	node_t* ndPtr = genNode(); //make the header node
+	node_t* ndPtr = genNode(); //make the header node 
 	
 	if (ndPtr != NULL)
 	{

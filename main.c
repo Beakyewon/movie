@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
 	void *list, *mvInfo; //pointers for linked list and a specific structure instance for a movie data
 	void *ndPtr; //void pointer for linked list node
 	
+	/*struct movInfo *headPtr=NULL, *endPtr=NULL;*/
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
@@ -28,23 +29,29 @@ int main(int argc, char *argv[]) {
         printf("Error while opening");
         exit(1);
  }
+ 
+ 	fscanf(fp, "%s %s %i %s", name, country, &runTime, &score);
+	
+	printf("%s, %s, %i, %s", name, country, runTime, score);
+	
+	
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list //영화 정보 한줄씩 읽어와서 링크드 리스트에 저장 
-	movInfo_t [10];
 	int i;
+	char str[500];
 	
-	for(i=0; i<10; i++){
-		fscanf(fp, "%s, %s, %i, %f", &movInfo_t.name, &movInfo_t.madeIn, &movInfo_t.runTime, &movInfo_t.score);
+	while(1){
+		i=0;
+		fgets(str, 500, fp);
 	}
 	
-	/* while (/* read name, country, runtime and score)
-	 {	
-		//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-		list_addTail(mvInfo, list);
-	}*/ 
+	//generate a movie info instance(mvInfo) with function mv_genMvInfo()
+	mvInfo= mv_genMvInfo(name, score, runTime, country);
+	
+	list_addTail(mvInfo, list);
 
 	//1.4 FILE close
 	fclose(fp);
