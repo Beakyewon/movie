@@ -23,35 +23,28 @@ int main(int argc, char *argv[]) {
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
-	fp = fopen("movie.txt","r");
+	fp = fopen("movie.dat","r");
 	
 		if (fp == 0){
         printf("Error while opening");
-        exit(1);
- }
- 
- 	fscanf(fp, "%s %s %i %s", name, country, &runTime, &score);
-	
-	printf("%s, %s, %i, %s", name, country, runTime, score);
-	
-	
+        
+ }	
 	
 	//1.2 list generation (use function list_genList() )
 	list = list_genList();
 	
 	//1.3 read each movie data from the file and add it to the linked list //영화 정보 한줄씩 읽어와서 링크드 리스트에 저장 
-	int i;
-	char str[500];
-	
-	while(1){
-		i=0;
-		fgets(str, 500, fp);
-	}
 	
 	//generate a movie info instance(mvInfo) with function mv_genMvInfo()
-	mvInfo= mv_genMvInfo(name, score, runTime, country);
 	
-	list_addTail(mvInfo, list);
+	
+	while(fscanf(fp, "%s %s %i %f", name, country, &runTime, &score) != EOF)
+	{
+		mvInfo = mv_genMvInfo(name, score, runTime, country);
+		
+		list_addTail(mvInfo, list);
+	}
+	
 
 	//1.4 FILE close
 	fclose(fp);
@@ -71,18 +64,29 @@ int main(int argc, char *argv[]) {
 			case 1: //print all the movies
 				printf("printing all the movies in the list.....\n\n\n");
 				
-				ndPtr = list;
-				while (/* repeat until the ndPtr points to the end node */)
+				ndPtr = list; //이게 무슨뜻인지 물어보기. 
+				
+				while ( list_isEndNode(ndPtr) != 0)/* repeat until the ndPtr points to the end node */
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
-					//get object of ndPtr to mvInfo void pointer
+					void *next = list_getNextNd(ndPtr); //get the next node of the input node
+					
+					ndPtr = next;
+					
+					//get object of ndPtr to mvInfo void pointer   ndPtr의 데이터를 mvInfo의 포인터로 가져옴.  
+					mvInfo = list_getNdObj(ndPtr);
+					
 					//print the contents of the mvInfo
+					mv_print(mvInfo);
+					
 					}
-				}
+				
 				
 				break;
 				
+		
+		/*		
 			case 2: //print movies of specific country
 				
 				printf("--Select a country :");
@@ -92,7 +96,7 @@ int main(int argc, char *argv[]) {
 				//2.3.1 get country name to search for
 				
 				ndPtr = list;
-					while (/* repeat until the ndPtr points to the end node */)
+					while (/* repeat until the ndPtr points to the end node )
 				{
 					//2.3.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -111,7 +115,7 @@ int main(int argc, char *argv[]) {
 				scanf("%d\n", &runtime);
 				
 				ndPtr = list;
-					while (/* repeat until the ndPtr points to the end node */)
+					while (/* repeat until the ndPtr points to the end node )
 				{
 					//2.4.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -129,7 +133,7 @@ int main(int argc, char *argv[]) {
 				scanf("%f\n", &score);
 				
 				ndPtr = list;
-					while (/* repeat until the ndPtr points to the end node */)
+					while (/* repeat until the ndPtr points to the end node )
 				{
 					//2.5.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
@@ -137,9 +141,9 @@ int main(int argc, char *argv[]) {
 					//if the input score is lower than the score of the movie,
 					//then print the contents of the mvInfo
 				}
-				break;
+				break; */
 				
-			case 5:
+			case 2 :
 				printf("Bye!\n\n");
 				exit_flag = 1;
 				break;

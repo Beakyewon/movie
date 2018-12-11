@@ -3,39 +3,33 @@
 #include <string.h>
 #include "movie.h"
 
-struct movInfo{ //구조체 
+typedef struct movInfo{ //구조체 
 	char name[200];
 	float score;
 	int runTime;
 	char madeIn[10];
 	
-};
+}movInfo_t;
+
+
 
 void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 {
 	//구조체 포인터  
-	struct movInfo movInfo_t[10];
+	//struct movInfo movInfo_t[10];
 	
-	int i;
 	
-	struct movInfo *mvPtr;
+	movInfo_t* mvPtr;
+	
 
 	//allocate memory and set the member variables 메모리 할당. 변수 설정.  
-	mvPtr = (struct movInfo*) malloc(sizeof(struct movInfo));
+	mvPtr = (movInfo_t*) malloc(sizeof(movInfo_t));
 
-	mvPtr->name = name; 
+	strcpy(mvPtr->name ,name);
 	mvPtr->score = score;
 	mvPtr->runTime = runTime;
-	mvPtr->madeIn = country;
+	strcpy(mvPtr->madeIn,country);
 	
-
-	for(i=0; i<10; i++){
-	 
- 		fscanf(fp, "%s %s %i %f", (mvPtr+i)->name, (mvPtr+i)->madeIn, &(mvPtr+i)->runTime, &(mvPtr+i)->score);
- 	
-	 	printf("%s %s %i %f \n", (mvPtr+i)->name, (mvPtr+i)->madeIn, (mvPtr+i)->runTime, (mvPtr+i)->score); 
-	 }
-	 
 	return (void*) mvPtr;
 }
 
@@ -57,7 +51,7 @@ void mv_print(void* obj)
 	return;
 }
 
-
+/*
 //return the score value from the input instance of movInfo_t structure
 float mv_getScore(void* obj)
 {
@@ -102,5 +96,5 @@ char* mv_getCountry(void* obj)
 {
 	
 }
-
+*/
 

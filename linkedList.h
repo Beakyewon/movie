@@ -2,10 +2,10 @@
 //list or node creating
 void* list_genList(void); //generating a Linked List : This must be called once for using a Linked List 리스트를 만드는 것 얘만 부르시면 되요 
 int list_addTail(void* obj, void* list); //add a node at the end of the list    obj 는 영화정보 데이터를 가진 구조체 포인터 함수역할- 메모리를 잡아서 꼬리에 포인트 붙이는 것 
-int list_addNext(void* obj, void* nd); //add a node at the next of the input node
+int list_addNext(void* obj, void* nd); //add a node at the next of the input node 입력노드 다음에 노드 추가.  
 
 //check the property of the list/node
-int list_isEndNode(void* nd); //tell if the node is the end node (0 : it is NOT the end node, 1 : it is the end node) 노드가 끛인지 아닌지 확인해주는 함수. 
+int list_isEndNode(void* nd); //tell if the node is the end node (0 : it is NOT the end node, 1 : it is the end node) 노드가 끝인지 아닌지 확인해주는 함수. 
 int list_len(void* list); //returns the number of nodes in the list 노드가 몇개인지 반환해주는 함수. 
 
 //get the node pointer
