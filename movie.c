@@ -29,8 +29,6 @@ void* mv_genMvInfo(char* name, float score, int runTime, char* country)
 }
 
 
-	
-
 void mv_print(void* obj)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
@@ -47,38 +45,35 @@ void mv_print(void* obj)
 	return;
 }
 
-/*
+
 //return the score value from the input instance of movInfo_t structure
 float mv_getScore(void* obj)
 {
-	int count =0;
-	char insrt[100];
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	printf("평점을 입력하세요: ");
-	gets(instr);
-	fp=fopen("movie.dat", "r");
+	float score;
 	
-	while(1){
-		
-		if(strcmp(instr," ")==0){
-			
-			break;
-			
-		}while(mvPtr != NULL){
-			if(strstr(mvPtr->score, instr) != NULL)
-			{
-				printf("Name : %s (%s)\n", mvPtr->name, mvPtr->madeIn);
-				printf("running time : %i, score : %f\n", mvPtr->runTime, mvPtr->score);
-			}
-		}
+	score = mvPtr->score;
 	
+	return score;
 	 
 }
 
 //return the runtime value from the input instance of movInfo_t structure
 int mv_getRunTime(void* obj)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	int time;
+	
+	time= mvPtr->runTime;
+	
+	if(time ==NULL)
+	{
+		printf("ERROR");
+	}
+	
+	return time;
 }
 
 //return the name string pointer from the input instance of movInfo_t structure
@@ -87,10 +82,21 @@ char* mv_getName(void* obj)
 	
 }
 
+
 //return the country string pointer from the input instance of movInfo_t structure
 char* mv_getCountry(void* obj)
 {
+	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
+	char str[100];
+	
+	strcpy( str, mvPtr-> madeIn );
+	
+	if(str==NULL)
+	{
+		printf("ERROR");
+	}
+	
+	return str;
 }
-*/
 
