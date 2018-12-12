@@ -53,7 +53,7 @@ float mv_getScore(void* obj)
 	
 	float score;
 	
-	score = mvPtr->score;
+	score = mvPtr->score; //구조체 포인터 속 score 데이터를 score 에 저장한다.
 	
 	return score;
 	 
@@ -66,9 +66,9 @@ int mv_getRunTime(void* obj)
 	
 	int time;
 	
-	time= mvPtr->runTime;
+	time= mvPtr->runTime; //구조체 포인터 속 runtime 데이터를 time에 저장한다. 
 	
-	if(time ==NULL)
+	if(time ==NULL) // time에 값이 없으면 ERROR라고 출력한다. 
 	{
 		printf("ERROR");
 	}
@@ -90,7 +90,7 @@ char* mv_getCountry(void* obj)
 	
 	char str[100];
 	
-	strcpy( str, mvPtr-> madeIn );
+	strcpy(str, mvPtr-> madeIn ); // 구조체 포인터 속 madeIn 문자열 데이터를 str 에 복사한다. 
 	
 	if(str==NULL)
 	{

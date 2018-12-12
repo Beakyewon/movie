@@ -18,20 +18,20 @@ int main(int argc, char *argv[]) {
 	int option; //user input option
 	void *list, *mvInfo; //pointers for linked list and a specific structure instance for a movie data
 	void *ndPtr; //void pointer for linked list node
-	int count=0;
-	/*struct movInfo *headPtr=NULL, *endPtr=NULL;*/
+	int count=0; // 검색한 영화 개수 세기 위해 변수선언했음. 
+	
 	
 	//1. reading the movie.dat-----------------------------
 	//1.1 FILE open
-	fp = fopen("movie.dat","r");
+	fp = fopen("movie.dat","r"); //mavie.dat 읽기 모드로 파일 열기. 
 	
-		if (fp == 0){
+		if (fp == 0){ // 파일 열지 못한경우 문구 출력. 
         printf("Error while opening");
         exit(1);
- }	
+	}	
 	
 	//1.2 list generation (use function list_genList() )
-	list = list_genList();
+	list = list_genList(); 
 	
 	//1.3 read each movie data from the file and add it to the linked list //영화 정보 한줄씩 읽어와서 링크드 리스트에 저장 
 	
@@ -40,7 +40,7 @@ int main(int argc, char *argv[]) {
 	while(fscanf(fp, "%s %s %i %f", name, country, &runTime, &score) != EOF)
 	{
 		
-		mvInfo = mv_genMvInfo(name, score, runTime, country);
+		mvInfo = mv_genMvInfo(name, score, runTime, country); 
 		
 		list_addTail(mvInfo, list);
 		
@@ -50,15 +50,21 @@ int main(int argc, char *argv[]) {
 	//1.4 FILE close
 	fclose(fp);
 	
-	printf("\nReading the data files....\n");
-	printf("Read Done! %i items are read!\n", list_len(list));
+	printf("\n Reading the data files....\n");
+	printf(" Read Done! %i items are read!\n", list_len(list)); // 영화 총 데이터 개수 출력하기  
 	
 	//2. program start
 	while(exit_flag == 0) 
 	{
 		//2.1 print menu message and get input option
-		printf("\n\n\n--------------------Menu-------------------\n 1. print all the movies\n 2. search for specific country movies\n 3. search for specific runtime movies\n 4. search for specific score movies\n 5. exit\n -------------------Menu-------------------\n\n");                
-	
+		printf("\n\n\n--------------------Menu-------------------\n");                
+		printf("1. Print all the movies\n");
+		printf("2. Search for specific country movies\n");
+		printf("3. Search for specific runtime movies\n");
+		printf("4. Search for specific score movies\n");
+		printf("5. Exit\n");
+		printf("--------------------Menu-------------------\n\n");
+		 
 		printf("--Select the option: ");
 		
 		scanf("%d", &option);
@@ -141,7 +147,7 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					mvInfo = list_getNdObj(ndPtr);
 					//if the input runtime is lower than the runtime of the movie,
-					if( mv_getRunTime(mvInfo) <= runTime )
+					if( mv_getRunTime(mvInfo) >= runTime )
 					{
 						mv_print(mvInfo);
 						count++;
