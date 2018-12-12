@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 	
 		if (fp == 0){
         printf("Error while opening");
-        
+        exit(1);
  }	
 	
 	//1.2 list generation (use function list_genList() )
@@ -37,17 +37,21 @@ int main(int argc, char *argv[]) {
 	
 	//generate a movie info instance(mvInfo) with function mv_genMvInfo()
 	
-	
 	while(fscanf(fp, "%s %s %i %f", name, country, &runTime, &score) != EOF)
 	{
+		
 		mvInfo = mv_genMvInfo(name, score, runTime, country);
 		
 		list_addTail(mvInfo, list);
+		
 	}
-	
+		
 
 	//1.4 FILE close
 	fclose(fp);
+	
+	printf("\nReading the data files....\n");
+	printf("Read Done! %i items are read!\n", list_len(list));
 	
 	//2. program start
 	while(exit_flag == 0) 
@@ -57,36 +61,36 @@ int main(int argc, char *argv[]) {
 	
 		printf("--Select the option: ");
 		
-		scanf("%d\n", &option);
+		scanf("%d", &option);
 		
 		switch(option)
 		{
 			case 1: //print all the movies
 				printf("printing all the movies in the list.....\n\n\n");
 				
-				ndPtr = list; //이게 무슨뜻인지 물어보기. 
+				ndPtr = list; 
 				
-				while ( list_isEndNode(ndPtr) != 0)/* repeat until the ndPtr points to the end node */
+				while ( list_isEndNode(ndPtr) == 0 )/* repeat until the ndPtr points to the end node */
 				{
 					//2.2 print a movie data : use functions of movie.c and linkedList.c
 					//ndPtr = the next node of the ndPtr;
-					void *next = list_getNextNd(ndPtr); //get the next node of the input node
+					ndPtr = list_getNextNd(ndPtr); //get the next node of the input node
 					
-					ndPtr = next;
 					
 					//get object of ndPtr to mvInfo void pointer   ndPtr의 데이터를 mvInfo의 포인터로 가져옴.  
 					mvInfo = list_getNdObj(ndPtr);
+				
 					
 					//print the contents of the mvInfo
 					mv_print(mvInfo);
 					
 					}
-				
+				printf("totally %d movies are listed!", list_len(list));
 				
 				break;
 				
-		
-		/*		
+		/*
+			
 			case 2: //print movies of specific country
 				
 				printf("--Select a country :");
