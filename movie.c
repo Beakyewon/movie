@@ -39,7 +39,7 @@ void mv_print(void* obj)
 	}
 	printf("--------------------------------------------\n");
 	printf("Name : %s (%s)\n", mvPtr->name, mvPtr->madeIn);
-	printf("running time : %d, score : %f\n", mvPtr->runTime, mvPtr->score);
+	printf("running time : %d, score : %.2f\n", mvPtr->runTime, mvPtr->score);
 	printf("--------------------------------------------\n");
 	
 	return;
@@ -88,7 +88,7 @@ char* mv_getCountry(void* obj)
 {
 	movInfo_t* mvPtr = (movInfo_t*)obj;
 	
-	char str[100];
+	char str[100]; //문자열 저장할 변수 선언. 
 	
 	strcpy(str, mvPtr-> madeIn ); // 구조체 포인터 속 madeIn 문자열 데이터를 str 에 복사한다. 
 	

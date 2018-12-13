@@ -90,9 +90,9 @@ int main(int argc, char *argv[]) {
 					//print the contents of the mvInfo
 					mv_print(mvInfo);
 					
-					count++;
+					count++; // 영화 개수 한개씩 카운터해줌. 
 					}
-				printf("totally %d movies are listed!", count);
+				printf("totally %d movies are listed!", count); // 조건에 해당되는 영화개수 출력 
 				
 				count=0;
 				
@@ -118,7 +118,7 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					mvInfo = list_getNdObj(ndPtr);
 					//if the input country matches to the country of the movie,
-					 if (strcmp(country, mv_getCountry(mvInfo))==0)
+					 if (strcmp(country, mv_getCountry(mvInfo))==0) // 입력한 문자열과 영화 데이터 속 문자열이 일치하면 출력. 
 					 {
 					 	mv_print(mvInfo);
 						count++;
@@ -147,7 +147,7 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					mvInfo = list_getNdObj(ndPtr);
 					//if the input runtime is lower than the runtime of the movie,
-					if( mv_getRunTime(mvInfo) >= runTime )
+					if( mv_getRunTime(mvInfo) >= runTime )// 입력한 숫자보다 영화 데이터 속 숫자가 더 크면 출력 
 					{
 						mv_print(mvInfo);
 						count++;
@@ -175,7 +175,7 @@ int main(int argc, char *argv[]) {
 					//get object of ndPtr to mvInfo void pointer
 					mvInfo = list_getNdObj(ndPtr);
 					//if the input score is lower than the score of the movie,
-					if(mv_getScore(mvInfo)>=score)
+					if(mv_getScore(mvInfo)>=score) // 입력한 숫자보다 영화 데이터 속 숫자가 더 크면 출력. 
 					{
 						mv_print(mvInfo);
 						count++;
